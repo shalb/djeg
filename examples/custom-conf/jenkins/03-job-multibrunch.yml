@@ -1,0 +1,27 @@
+job_dsl_scripts:
+- |
+  multibranchPipelineJob('PR-checks') {
+      branchSources {
+          github {
+              repoOwner('romanprog')
+              repository('redis_mon_exporter')
+              scanCredentialsId('gituserpass')
+              checkoutCredentialsId('gituserpass')
+          }
+      }
+      orphanedItemStrategy {
+          discardOldItems {
+              numToKeep(20)
+          }
+      }
+
+      configure {
+          it / factory(class: 'org.jenkinsci.plugins.workflow.multibranch.WorkflowBranchProjectFactory') {
+               owner(class: 'org.jenkinsci.plugins.workflow.multibranch.WorkflowMultiBranchProject', reference: '../..')
+               scriptPath("Jenkinsfile_mb")
+          }
+      }
+      triggers {
+          periodic(1)
+      }
+  }

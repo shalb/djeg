@@ -1,0 +1,12 @@
+seed_jobs:
+  arti-go-build:
+    source:
+      remote: git@github.com:romanprog/djeg_pipeline.git
+      credentialsId: 'JENKINS-CRED-ID'
+      branch: 'master'
+    triggers:
+      pollScm: 'H/2 * * * *'
+    #  periodic: '@hourly'
+    pipeline: Jenkinsfile
+    executeWhen: always #firstTimeOnly always never
+

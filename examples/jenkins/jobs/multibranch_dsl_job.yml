@@ -1,0 +1,31 @@
+# Simple multibranch job dsl definition.
+# Test repo: https://github.com/romanprog/djeg_pipeline/
+job_dsl_scripts:
+  - |
+    multibranchPipelineJob('example') {
+        branchSources {
+            github {
+                repoOwner('romanprog')
+                repository('djeg_pipeline')
+                scanCredentialsId('JENKINS-CRED-ID')
+                checkoutCredentialsId('JENKINS-CRED-ID')
+            }
+        }
+# Scan every min.
+        triggers {
+            periodic(1)
+        }
+        orphanedItemStrategy {
+            discardOldItems {
+                numToKeep(20)
+            }
+        }
+# Set custom script (Jenkinsfile) name. 
+        configure {
+            it / factory(class: 'org.jenkinsci.plugins.workflow.multibranch.WorkflowBranchProjectFactory') {
+                 owner(class: 'org.jenkinsci.plugins.workflow.multibranch.WorkflowMultiBranchProject', reference: '../..')
+                 scriptPath("Jenkinsfile_pr")
+            }
+        }
+
+    }

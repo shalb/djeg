@@ -1,0 +1,20 @@
+version: '3.6'
+services:
+  jslave-common:
+    image: jslave-common
+    environment:
+      MASTER: 'http://jenkins:8080'
+      LABELS: 'docker-cli'
+      PASSWORD: 'SWARM-SLAVE-PASS80'
+      USERNAME: 'jenkins.swarm'
+      FSROOT: '/home/jenkins-slave'
+      EXECUTORS: '2'
+      NAME: 'static-slave-docker-cli'
+      http_proxy: ${http_proxy}
+      https_proxy: ${https_proxy}
+      no_proxy: ${no_proxy}
+    deploy:
+      mode: replicated
+      replicas: 1
+      restart_policy:
+        condition: on-failure

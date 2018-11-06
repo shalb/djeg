@@ -1,0 +1,21 @@
+   location = /auth-proxy {
+         proxy_pass http://nginx-ldap-auth:8888;
+         # proxy_cache auth_cache; # Must match the name in the proxy_cache_path directive above
+         # proxy_cache_valid 200 10m;
+
+         # URL and port for connecting to the LDAP server
+         proxy_set_header X-Ldap-URL "ldap://ldap";
+
+         # Negotiate a TLS-enabled (STARTTLS) connection before sending credentials
+         proxy_set_header X-Ldap-Starttls "false";
+
+         # Base DN
+         proxy_set_header X-Ldap-BaseDN "ou=users,#LDAP_BASE_DN#";
+
+         # Bind DN
+         proxy_set_header X-Ldap-BindDN "cn=readonly,#LDAP_BASE_DN#";
+
+         # Bind password
+         proxy_set_header X-Ldap-BindPass "readonly";
+         proxy_set_header X-Ldap-Template "(&(uid=%(username)s)(memberOf=cn=http-auth,ou=groups,#LDAP_BASE_DN#))";
+   }
