@@ -64,7 +64,7 @@ DJEG_LDAP_ADMIN_HOST_FQDN=ldap-admin.djeg.example.org
 LDAP_DOMAIN=example.org
 LDAP_BASE_DN=dc=example,dc=org
 
-JEG_NEXUS_DATA_DIR=/data/djeg/nexus
+DJEG_NEXUS_DATA_DIR=/data/djeg/nexus
 DJEG_JENKINS_DATA_DIR=/data/djeg/jenkins
 
 DJEG_NGINX_SSL_DIR=/data/djeg/ssl
