@@ -13,7 +13,13 @@ services:
       http_proxy: ${http_proxy}
       https_proxy: ${https_proxy}
       no_proxy: ${no_proxy}
+    env_file:
+      - ${DJEG_CUSTOM_CONF_DIR}/config.env
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
     deploy:
+      placement:
+        constraints: [node.role == manager]
       mode: replicated
       replicas: 1
       restart_policy:
