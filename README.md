@@ -45,7 +45,7 @@ Contains the following services:
 
 **1) Clone djeg repo:**
 ```shell
-git clone https://reader:reader123@gitlab.shalb.com/shalb/djeg/ /opt/djeg
+git clone https://github.com/shalb/djeg /opt/djeg
 ```
 
 **2) Create custom configuration from example:**
