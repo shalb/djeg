@@ -38,6 +38,13 @@ objectclass: top
 objectClass: groupOfNames
 member: uid=root.admin
 
+dn: cn=registry-managers,ou=groups,{{ LDAP_BASE_DN }}
+changetype: add
+cn: all-users
+objectclass: top
+objectClass: groupOfNames
+member: uid=root.admin
+
 dn: cn=http-auth,ou=groups,{{ LDAP_BASE_DN }}
 changetype: add
 cn: all-users
@@ -52,10 +59,21 @@ cn: Jenkins Admin
 sn: Jenkins
 objectClass: top
 objectClass: inetOrgPerson
-userPassword: ROOT_ADMIN_PASSWORD
-mail: jenkins.admin@example.org
+userPassword: ROOT_ADMIN_PASS
+mail: jenkins.admin@shalb.com
 memberOf: cn=nx-admin,ou=groups,{{ LDAP_BASE_DN }}
 memberOf: cn=http-auth,ou=groups,{{ LDAP_BASE_DN }}
+
+dn: uid=docker-cli,ou=users,{{ LDAP_BASE_DN }}
+changetype: add
+uid: registry user
+cn: Registry User
+sn: Registry
+objectClass: top
+objectClass: inetOrgPerson
+userPassword: DOCKER_REGISTRY_PASS
+mail: arti@shalb.com
+memberOf: cn=registry-managers,ou=groups,{{ LDAP_BASE_DN }}
 
 dn: uid=jenkins.swarm,ou=users,{{ LDAP_BASE_DN }}
 changetype: add
@@ -65,7 +83,7 @@ sn: Jenkins
 objectClass: top
 objectClass: inetOrgPerson
 userPassword: SWARM-SLAVE-PASS80
-mail: jenkins.swarm@example.org
+mail: jenkins.swarm@shalb.com
 
 dn: uid=james.dean,ou=users,{{ LDAP_BASE_DN }}
 changetype: add
