@@ -61,8 +61,8 @@ DJEG_REGISTRY_HOST_FQDN=registry.djeg.example.org
 DJEG_NEXUS_HOST_FQDN=nexus.djeg.example.org
 DJEG_LDAP_ADMIN_HOST_FQDN=ldap-admin.djeg.example.org
 
-LDAP_DOMAIN: example.org
-LDAP_BASE_DN: dc=example,dc=org
+LDAP_DOMAIN=example.org
+LDAP_BASE_DN=dc=example,dc=org
 
 JEG_NEXUS_DATA_DIR=/data/djeg/nexus
 DJEG_JENKINS_DATA_DIR=/data/djeg/jenkins
