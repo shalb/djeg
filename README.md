@@ -12,7 +12,7 @@ Requires only 15 minutes to deploy instead of 3-6 month of integration.
 
 Product use-case:
 
-Deploy a CI/CD systems (Jenkins, Sprinnaker, Nexus) from scretch using scripts.
+Deploy a CI/CD systems (Jenkins, Sprinnaker, Nexus) from scratch using scripts.
 Complete development infrastructure installation with IaaC(Infrastructure as a Code) approach.
 Centralized user management for all integrated systems using OpenLDAP.
 "ELK"-stack deployment for services and CI/CD jobs logging. 
