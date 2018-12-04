@@ -34,7 +34,7 @@ Contains the following services:
 * static jenkins slave with the possibility of customization. [Dockerfile](examples/custom-conf/images/jslave-common/Dockerfile)
 
 ## Prerequisites
-* docker in swarm mode
+* Host with Docker in Swarm mode
 * Real ip address available from the Internet.
 * Opened ports 80 and 443.
 * DNS record for the base DJEG domain, pointing to the server IP address:
