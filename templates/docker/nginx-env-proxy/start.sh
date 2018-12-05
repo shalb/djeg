@@ -20,7 +20,7 @@ sed -i "s|#LDAP_BASE_DN#|${LDAP_BASE_DN}|g" ${LDAP_INCLUDE_NAME}
 #while true; do
 #sleep 2
 #done
-/ssl_processing.sh ${DOMAINS_LIST} &
+ssl_processing.sh ${DOMAINS_LIST} &
 
 /usr/sbin/nginx -g "daemon off;"
 

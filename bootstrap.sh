@@ -16,7 +16,7 @@ export DJEG_NGINX_SSL_DIR="${DJEG_NGINX_SSL_DIR}"
 sed  "s|#LDAP_BASE_DN#|${LDAP_BASE_DN}|g" templates/openldap/ldap.tmpl > templates/openldap/ldap.yml
 
 # build base images
-cd ${DJEG_DIR}/images/
+cd ${DJEG_DIR}/templates/docker/
 
 for NAME in `ls -1`; do
    echo "Building ${NAME}:"
