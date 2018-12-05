@@ -1,16 +1,12 @@
-Product name: DJEG
-
-Abbreviation for Docker Jenkins Elasticsearch Grafana.
-
-Product summary:
+Summary:
 
 Integrated system for the full cycle product development, from the source code to operational environments.
 Aggregates best DevOps and SRE practices.
 Preconfigured: Continuous Integration, Testing and Delivery, Log Aggregation,
-Monitoring, Alerting, Cetralized account management.
+Monitoring, Alerting, Centralized account management.
 Requires only 15 minutes to deploy instead of 3-6 month of integration.
 
-Product use-case:
+Use-case:
 
 Deploy a CI/CD systems (Jenkins, Nexus) from scratch using code.
 Complete development infrastructure installation with IaaC(Infrastructure as a Code) approach.
@@ -19,10 +15,11 @@ Templated infrastructure patterns with Terraform.
 Deployment to any platform like AWS, Google Cloud, Kubernetes, Azure, Openstack.
 
 TBD:
+
 "ELK"-stack deployment for services and CI/CD jobs logging. 
 Alerting with Elasalert to notify developers on logs events on any environment.
 Notification to Slack, Email or any other channels.
-Deploy metrics and monitoring with Prometheus and Grafana with service autoconfiguration.
+Deploy metrics and monitoring with Prometheus and Grafana with service auto-configuration.
 
 
 # Djeg
@@ -38,10 +35,12 @@ Contains the following services:
 
 ## Prerequisites
 * Server with Docker in Swarm mode
-* Real ip address available from the Internet.
+* Public ip address available from the Internet.
 * Opened ports 80 and 443.
 * DNS record for the base DJEG domain, pointing to the server IP address:
+  ```shell
   *.djeg.example.com. IN A xx.xx.xx.xx
+  ```
   Or individual A records with same IP for all domains in [config.env](examples/custom-conf/config.env)
 
 ## Starting up stack
