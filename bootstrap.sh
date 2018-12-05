@@ -24,7 +24,7 @@ for NAME in `ls -1`; do
 done
 
 # build custom images
-cd ${DJEG_CUSTOM_CONF_DIR}/images/
+cd ${DJEG_CUSTOM_CONF_DIR}/docker/
 
 for NAME in `ls -1`; do
    echo "Building ${NAME}:"

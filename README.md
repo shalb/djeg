@@ -31,7 +31,7 @@ Contains the following services:
 * nexus - Sonatype Nexus Repository Manager 3, from [Nexus](https://hub.docker.com/r/sonatype/nexus3/)
 * registry - nexus hosted docker repo: [Nexus registry](https://help.sonatype.com/repomanager3/private-registry-for-docker)
 * nginx_env_proxy - nginx proxy service with LE SSL automation (see description below)
-* static jenkins slave with the possibility of customization. [Dockerfile](examples/custom-conf/images/jslave-common/Dockerfile)
+* static jenkins slave with the possibility of customization. [Dockerfile](examples/custom-conf/docker/jslave-common/Dockerfile)
 
 ## Prerequisites
 * Server with Docker in Swarm mode
@@ -91,7 +91,7 @@ $EDITOR /etc/djeg/jenkins/02-credentials.yml
 $EDITOR /etc/djeg/jenkins/03-job-multibrunch.yml
 ```
 
-**7) Add the necessary software to jenkins slave container [Dockerfile](examples/custom-conf/images/jslave-common/Dockerfile):**
+**7) Add the necessary software to jenkins slave container [Dockerfile](examples/custom-conf/docker/jslave-common/Dockerfile):**
 ```shell
 $EDITOR /etc/djeg/images/jslave-common/Dockerfile
 ```
