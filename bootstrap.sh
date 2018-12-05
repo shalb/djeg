@@ -12,9 +12,10 @@ export DJEG_NEXUS_DATA_DIR="${DJEG_NEXUS_DATA_DIR}"
 export DJEG_JENKINS_DATA_DIR="${DJEG_JENKINS_DATA_DIR}"
 export DJEG_NGINX_SSL_DIR="${DJEG_NGINX_SSL_DIR}"
 
-cp jenkins/ldap.tmpl jenkins/ldap.yml
-sed -i "s|#LDAP_BASE_DN#|${LDAP_BASE_DN}|g" jenkins/ldap.yml
+# generate ldap.file with users
+sed  "s|#LDAP_BASE_DN#|${LDAP_BASE_DN}|g" templates/openldap/ldap.tmpl > templates/openldap/ldap.yml
 
+# build base images
 cd ${DJEG_DIR}/images/
 
 for NAME in `ls -1`; do
@@ -22,6 +23,7 @@ for NAME in `ls -1`; do
    docker build -t ${NAME} ./${NAME}/
 done
 
+# build custom images
 cd ${DJEG_CUSTOM_CONF_DIR}/images/
 
 for NAME in `ls -1`; do
@@ -29,10 +31,12 @@ for NAME in `ls -1`; do
    docker build -t ${NAME} ./${NAME}/
 done
 
+# Deploy base stack
 cd ${DJEG_DIR}/
 echo "Deploying base stack:"
-docker stack deploy -c stack.yml djeg --with-registry-auth
+docker stack deploy -c templates/swarm/stack.yml djeg --with-registry-auth
 
+# Deploy custom stack
 cd ${DJEG_CUSTOM_CONF_DIR}/swarm/
 for NAME in `ls -1`; do
    echo "Deploying ${NAME}:"
