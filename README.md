@@ -12,15 +12,18 @@ Requires only 15 minutes to deploy instead of 3-6 month of integration.
 
 Product use-case:
 
-Deploy a CI/CD systems (Jenkins, Sprinnaker, Nexus) from scratch using scripts.
+Deploy a CI/CD systems (Jenkins, Nexus) from scratch using code.
 Complete development infrastructure installation with IaaC(Infrastructure as a Code) approach.
 Centralized user management for all integrated systems using OpenLDAP.
+Templated infrastructure patterns with Terraform.
+Deployment to any platform like AWS, Google Cloud, Kubernetes, Azure, Openstack.
+
+TBD:
 "ELK"-stack deployment for services and CI/CD jobs logging. 
 Alerting with Elasalert to notify developers on logs events on any environment.
 Notification to Slack, Email or any other channels.
 Deploy metrics and monitoring with Prometheus and Grafana with service autoconfiguration.
-Templated infrastructure patterns with Terraform.
-Deployment to any platform like AWS, Google Cloud, Kubernetes, Azure, Openstack.
+
 
 # Djeg
 
@@ -34,7 +37,7 @@ Contains the following services:
 * static jenkins slave with the possibility of customization. [Dockerfile](examples/custom-conf/images/jslave-common/Dockerfile)
 
 ## Prerequisites
-* Host with Docker in Swarm mode
+* Server with Docker in Swarm mode
 * Real ip address available from the Internet.
 * Opened ports 80 and 443.
 * DNS record for the base DJEG domain, pointing to the server IP address:
@@ -74,24 +77,24 @@ EOF
 
 **4) Edit users and privileges settings [custom.ldif](examples/custom-conf/ldap/custom.ldif):**
 ```shell
-vim /etc/djeg/ldap/custom.ldif
+$EDITOR /etc/djeg/ldap/custom.ldif
 ```
 (for testing, you could use default example file)
 
 **5) Add jenkins credentials [02-credentials.yml](examples/custom-conf/jenkins/02-credentials.yml):**
 ```shell
-vim /etc/djeg/jenkins/02-credentials.yml
+$EDITOR /etc/djeg/jenkins/02-credentials.yml
 ```
 (for testing, you could use default example file)
 
 **6) Edit multibranch pipeline job [03-job-multibrunch.yml](examples/custom-conf/jenkins/03-job-multibrunch.yml):**
 ```shell
-vim /etc/djeg/jenkins/03-job-multibrunch.yml
+$EDITOR /etc/djeg/jenkins/03-job-multibrunch.yml
 ```
 
 **7) Add the necessary software to jenkins slave container [Dockerfile](examples/custom-conf/images/jslave-common/Dockerfile):**
 ```shell
-vim /etc/djeg/images/jslave-common/Dockerfile
+$EDITOR /etc/djeg/images/jslave-common/Dockerfile
 ```
 (for testing, you could use default example file)
 
