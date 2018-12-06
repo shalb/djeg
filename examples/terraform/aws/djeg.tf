@@ -1,3 +1,4 @@
+## Define Roles and Policies
 resource "aws_iam_role" "role_djeg" {
   name               = "role_${var.name}"
   assume_role_policy = "${file("policies/role.json")}"
@@ -15,6 +16,17 @@ resource "aws_iam_instance_profile" "iam_instance_profile_djeg" {
   role = "${aws_iam_role.role_djeg.name}"
 }
 
+## Define base image
+data "aws_ami" "djeg" {
+  most_recent = true
+
+  filter {
+    name   = "name"
+    values = ["ubuntu-djeg-18.04*"]
+  }
+}
+
+## Template
 data "template_file" "djeg_user_data" {
   template = "${file("files/djeg_user_data.tpl")}"
 
@@ -40,7 +52,7 @@ resource "aws_ebs_volume" "djeg-data" {
 resource "aws_instance" "djeg" {
   instance_type          = "${var.instance_type}"
   vpc_security_group_ids = ["${aws_security_group.sg_ci.id}"]
-  ami                    = "${data.aws_ami.celebtv.id}"
+  ami                    = "${data.aws_ami.djeg.id}"
   user_data              = "${data.template_file.djeg_user_data.rendered}"
   availability_zone      = "${var.availability_zone}"
   iam_instance_profile   = "${aws_iam_instance_profile.iam_instance_profile_djeg.name}"
@@ -67,5 +79,7 @@ resource "aws_volume_attachment" "djeg-data-volume-attachment" {
 }
 
 
-output "djeg_hostname" {   value = "${aws_route53_record.celebtv-ci-djeg.name}" }
+output "djeg_hostname" {
+  value = "${aws_route53_record.djeg.fqdn}"
+}
 

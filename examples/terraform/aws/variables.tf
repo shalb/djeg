@@ -32,6 +32,11 @@ variable "dns_zonename" {
   default     = ""
 }
 
+variable "dns_zone_id" {
+  description = "DNS zone name"
+  default     = ""
+}
+
 variable "djeg_version" {
   description = "Please define a version of DJEG"
   default     = ""

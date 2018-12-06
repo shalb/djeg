@@ -1,7 +1,8 @@
 terraform {
   backend "s3" {
-    bucket = "terraform"
-    key    = "djeg/terraform.tfstate"
+    bucket = "terraform-djeg"
+    key    = "terraform.tfstate"
     region = "eu-central-1"
+    profile = "shalb"
   }
 }
