@@ -1,4 +1,4 @@
-Summary:
+## Summary:
 
 Integrated system for the full cycle product development, from the source code to operational environments.
 Aggregates best DevOps and SRE practices.
@@ -6,7 +6,7 @@ Preconfigured: Continuous Integration, Testing and Delivery, Log Aggregation,
 Monitoring, Alerting, Centralized account management.
 Requires only 15 minutes to deploy instead of 3-6 month of integration.
 
-Use-case:
+## Use-case:
 
 Deploy a CI/CD systems (Jenkins, Nexus) from scratch using code.
 Complete development infrastructure installation with IaaC(Infrastructure as a Code) approach.
@@ -14,7 +14,7 @@ Centralized user management for all integrated systems using OpenLDAP.
 Templated infrastructure patterns with Terraform.
 Deployment to any platform like AWS, Google Cloud, Kubernetes, Azure, Openstack.
 
-TBD:
+### TBD:
 
 "ELK"-stack deployment for services and CI/CD jobs logging. 
 Alerting with Elasalert to notify developers on logs events on any environment.
