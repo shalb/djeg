@@ -1,0 +1,42 @@
+{
+  "variables": {
+    "target_ami_name": "ubuntu-djeg-18.04",
+    "source_ami_name": "ubuntu/images/hvm-ssd/ubuntu-bionic-18.04-amd64-server-20180823",
+    "aws_profile": "{{env `AWS_PROFILE`}}",
+    "aws_target_region": "eu-central-1"
+  },
+  "_comment": "ubuntu/images/*ubuntu-bionic-18.04-amd64-server-*",
+  "builders": [{
+    "type": "amazon-ebs",
+    "profile": "{{ user `aws_profile`}}",
+    "region": "{{user `aws_target_region`}}",
+    "source_ami_filter": {
+      "filters": {
+      "virtualization-type": "hvm",
+      "name": "{{user `source_ami_name`}}",
+      "root-device-type": "ebs"
+      },
+      "most_recent": true
+    },
+    "instance_type": "t2.micro",
+    "ssh_username": "ubuntu",
+    "ami_name": "{{user `target_ami_name`}}"
+  }],
+
+  "provisioners": [
+  {
+    "type": "file",
+    "source": "./root_sync_preinstall",
+    "destination": "/tmp/"
+  },
+  {
+    "type": "file",
+    "source": "./root_sync",
+    "destination": "/tmp/"
+  },
+  {
+    "type": "shell",
+    "script": "provision-ami.sh"
+  }
+  ]
+}
