@@ -28,7 +28,7 @@ data "aws_ami" "djeg" {
 
 ## Template
 data "template_file" "djeg_user_data" {
-  template = "${file("files/djeg_user_data.tpl")}"
+  template = "${file("files/djeg_user_data.tpl.sh")}"
 
   vars {
     instancehostname = "djeg.${var.dns_zonename}"
