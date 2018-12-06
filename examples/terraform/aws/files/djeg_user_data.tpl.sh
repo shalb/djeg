@@ -46,7 +46,7 @@ create_fs_paths() {
 
 hostname_gen() {
   echo "Hostname generation"
-  hostname "${instancehostname}" && hostname > /etc/hostname
+  hostname djeg."${dns_zonename}" && hostname > /etc/hostname
   echo "127.0.0.1 localhost $(hostname)" > /etc/hosts
 }
 
@@ -67,7 +67,7 @@ pushd /opt/djeg; git checkout tags/${djeg_version}
 cp -r /opt/djeg/examples/custom-conf/ /etc/djeg/
 
 ## Define domain from terraform
-sed -i 's/example.com/${instancehostname}/g' /opt/djeg/swarm/config.env
+sed -i 's/example.com/${dns_zonename}/g' /opt/djeg/swarm/config.env
 
 ##Init Swarm
 docker swarm init

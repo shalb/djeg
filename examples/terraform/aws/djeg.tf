@@ -36,7 +36,7 @@ data "template_file" "djeg_user_data" {
   template = "${file("files/djeg_user_data.tpl.sh")}"
 
   vars {
-    instancehostname = "djeg.${var.dns_zonename}"
+    dns_zonename = "djeg.${var.dns_zonename}"
     disk             = "${var.data_volume_mount_path}"
     djeg_version     = "${var.djeg_version}"
   }
