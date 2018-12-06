@@ -37,7 +37,7 @@ services:
     volumes:
       - ${DJEG_JENKINS_DATA_DIR}:/var/jenkins_home
       - ${DJEG_CUSTOM_CONF_DIR}/jenkins:/var/jenkins_home/conf
-      - ./templates/openldap/ldap.yml:/var/jenkins_home/conf/99-ldap.yml
+      - /opt/djeg/templates/openldap/ldap.yml:/var/jenkins_home/conf/99-ldap.yml
       - /var/run/docker.sock:/var/run/docker.sock
     environment:
         JAVA_OPTS_MEM: '-Xmx1g'
