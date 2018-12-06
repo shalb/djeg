@@ -1,3 +1,8 @@
+provider "aws" {
+  region = "${var.region}"
+}
+
+
 ## Define Roles and Policies
 resource "aws_iam_role" "role_djeg" {
   name               = "role_${var.name}"
