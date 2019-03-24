@@ -1,4 +1,4 @@
-FROM nginx:alpine
+FROM nginx:1.12-alpine
 
 RUN apk --update --no-cache add openssl acme-client mc bash \
      && openssl dhparam -dsaparam -out /etc/nginx/dhparam.pem 4096
