@@ -5,4 +5,4 @@ region = "eu-central-1"
 availability_zone = "eu-central-1a"
 instance_type = "t2.xlarge"
 
-djeg_version="v0.1.12"
+djeg_version="v0.1.14"
