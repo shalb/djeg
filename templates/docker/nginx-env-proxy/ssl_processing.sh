@@ -9,7 +9,7 @@ function get_ssl ()
  DOMAIN_SSL_DIR="${SSL_DIR}/${DOMAIN}/"
  mkdir -p "${DOMAIN_SSL_DIR}/acme"
 
- ACME_CLI_ARGS="-nNv -C /var/www/acme/.well-known/acme-challenge/ \
+ ACME_CLI_ARGS="-a https://letsencrypt.org/documents/LE-SA-v1.2-November-15-2017.pdf -nNv -C /var/www/acme/.well-known/acme-challenge/ \
  -f ${DOMAIN_SSL_DIR}/acme/account.key \
  -k ${DOMAIN_SSL_DIR}/private.key \
  -c ${DOMAIN_SSL_DIR} \
